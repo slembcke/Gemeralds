@@ -77,7 +77,8 @@
 	
 	// 350x250
 	kmMat4 projection;
-	kmMat4OrthographicProjection(&projection, 0, 350, 0, 250, -1, 1);
+	kmGLMatrixMode(KM_GL_PROJECTION);
+	kmMat4OrthographicProjection(&projection, 0, 480, 0, 320, -1000, 1000);
 	
 	glClear(GL_COLOR_BUFFER_BIT);
 	block();
