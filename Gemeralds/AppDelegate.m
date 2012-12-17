@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "IntroLayer.h"
 
+#import "CCBReader.h"
+
 @implementation MyNavigationController
 
 // The available orientations should be defined in the Info.plist file.
@@ -47,7 +49,7 @@
 	if(director.runningScene == nil) {
 		// Add the first scene to the stack. The director will draw it immediately into the framebuffer. (Animation is started automatically when the view is displayed.)
 		// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-		[director runWithScene: [IntroLayer scene]];
+		[director runWithScene: [CCBReader sceneWithNodeGraphFromFile:@"Level1.ccbi"]];
 	}
 }
 @end
@@ -90,8 +92,8 @@
 	//	[director setProjection:kCCDirectorProjection3D];
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director_ enableRetinaDisplay:YES] )
-		CCLOG(@"Retina Display Not supported");
+//	if( ! [director_ enableRetinaDisplay:YES] )
+//		CCLOG(@"Retina Display Not supported");
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
