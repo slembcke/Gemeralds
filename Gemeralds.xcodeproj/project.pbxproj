@@ -33,8 +33,6 @@
 		D3ACB237167FC278001538CD /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB236167FC278001538CD /* ChangeLog */; };
 		D3ACB256167FC279001538CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB255167FC279001538CD /* main.m */; };
 		D3ACB259167FC279001538CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB258167FC279001538CD /* AppDelegate.m */; };
-		D3ACB25C167FC279001538CD /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB25B167FC279001538CD /* HelloWorldLayer.m */; };
-		D3ACB25F167FC279001538CD /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB25E167FC279001538CD /* IntroLayer.m */; };
 		D3ACB26A167FC303001538CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3ACB0C7167FC275001538CD /* Foundation.framework */; };
 		D3ACB275167FC32A001538CD /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB0EF167FC276001538CD /* CCAction.m */; };
 		D3ACB276167FC32A001538CD /* CCActionCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB0F2167FC276001538CD /* CCActionCamera.m */; };
@@ -461,10 +459,6 @@
 		D3ACB255167FC279001538CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3ACB257167FC279001538CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3ACB258167FC279001538CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D3ACB25A167FC279001538CD /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		D3ACB25B167FC279001538CD /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		D3ACB25D167FC279001538CD /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		D3ACB25E167FC279001538CD /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		D3ACB269167FC303001538CD /* libCocos2D.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2D.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ACB2DD167FC518001538CD /* CCBAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBAnimationManager.h; sourceTree = "<group>"; };
 		D3ACB2DE167FC518001538CD /* CCBAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBAnimationManager.m; sourceTree = "<group>"; };
@@ -596,10 +590,6 @@
 			children = (
 				D3ACB257167FC279001538CD /* AppDelegate.h */,
 				D3ACB258167FC279001538CD /* AppDelegate.m */,
-				D3ACB25A167FC279001538CD /* HelloWorldLayer.h */,
-				D3ACB25B167FC279001538CD /* HelloWorldLayer.m */,
-				D3ACB25D167FC279001538CD /* IntroLayer.h */,
-				D3ACB25E167FC279001538CD /* IntroLayer.m */,
 				D3ACB0CE167FC275001538CD /* Resources */,
 				D3ACB0EC167FC276001538CD /* libs */,
 				D3ACB253167FC279001538CD /* Supporting Files */,
@@ -1221,8 +1211,6 @@
 			files = (
 				D3ACB256167FC279001538CD /* main.m in Sources */,
 				D3ACB259167FC279001538CD /* AppDelegate.m in Sources */,
-				D3ACB25C167FC279001538CD /* HelloWorldLayer.m in Sources */,
-				D3ACB25F167FC279001538CD /* IntroLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
