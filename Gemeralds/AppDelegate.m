@@ -9,8 +9,6 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "IntroLayer.h"
-
 #import "CCBReader.h"
 
 @implementation MyNavigationController
