@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D347A388168260FF0048BEA7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D347A38516825FB90048BEA7 /* CoreMotion.framework */; };
 		D3ACB0BC167FC275001538CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3ACB0BB167FC275001538CD /* QuartzCore.framework */; };
 		D3ACB0BE167FC275001538CD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3ACB0BD167FC275001538CD /* OpenGLES.framework */; };
 		D3ACB0C0167FC275001538CD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3ACB0BF167FC275001538CD /* OpenAL.framework */; };
@@ -168,6 +169,7 @@
 		D3ACB3B2167FC979001538CD /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3ACB3B1167FC979001538CD /* ImageIO.framework */; };
 		D3ACB3B8167FCAB4001538CD /* GeometryNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB3B7167FCAB4001538CD /* GeometryNode.m */; };
 		D3B4DE2116821DBE00DE24C5 /* SpaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */; };
+		D3B4DE2716823EDA00DE24C5 /* GeometrySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4DE2616823EDA00DE24C5 /* GeometrySprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +195,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D347A38516825FB90048BEA7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		D3ACB0B7167FC275001538CD /* Gemeralds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gemeralds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ACB0BB167FC275001538CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D3ACB0BD167FC275001538CD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -572,6 +575,8 @@
 		D3ACB3B7167FCAB4001538CD /* GeometryNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeometryNode.m; sourceTree = "<group>"; };
 		D3B4DE1F16821DBE00DE24C5 /* SpaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceNode.h; sourceTree = "<group>"; };
 		D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceNode.m; sourceTree = "<group>"; };
+		D3B4DE2516823EDA00DE24C5 /* GeometrySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometrySprite.h; sourceTree = "<group>"; };
+		D3B4DE2616823EDA00DE24C5 /* GeometrySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeometrySprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,6 +584,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D347A388168260FF0048BEA7 /* CoreMotion.framework in Frameworks */,
 				D3ACB3B2167FC979001538CD /* ImageIO.framework in Frameworks */,
 				D3ACB2D5167FC372001538CD /* libCocos2D.a in Frameworks */,
 				D3ACB0BC167FC275001538CD /* QuartzCore.framework in Frameworks */,
@@ -608,7 +614,6 @@
 		D3ACB0AC167FC275001538CD = {
 			isa = PBXGroup;
 			children = (
-				D3ACB3B1167FC979001538CD /* ImageIO.framework */,
 				D3ACB350167FC5F2001538CD /* CocosBuilderFiles */,
 				D3ACB0CD167FC275001538CD /* Gemeralds */,
 				D3ACB0BA167FC275001538CD /* Frameworks */,
@@ -628,6 +633,8 @@
 		D3ACB0BA167FC275001538CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D347A38516825FB90048BEA7 /* CoreMotion.framework */,
+				D3ACB3B1167FC979001538CD /* ImageIO.framework */,
 				D3ACB0BB167FC275001538CD /* QuartzCore.framework */,
 				D3ACB0BD167FC275001538CD /* OpenGLES.framework */,
 				D3ACB0BF167FC275001538CD /* OpenAL.framework */,
@@ -646,15 +653,17 @@
 			children = (
 				D3ACB257167FC279001538CD /* AppDelegate.h */,
 				D3ACB258167FC279001538CD /* AppDelegate.m */,
+				D3B4DE1F16821DBE00DE24C5 /* SpaceNode.h */,
+				D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */,
 				D3ACB3B6167FCAB4001538CD /* GeometryNode.h */,
 				D3ACB3B7167FCAB4001538CD /* GeometryNode.m */,
+				D3B4DE2516823EDA00DE24C5 /* GeometrySprite.h */,
+				D3B4DE2616823EDA00DE24C5 /* GeometrySprite.m */,
 				D3ACB380167FC7BA001538CD /* ChipmunkGLRenderBufferSampler.h */,
 				D3ACB381167FC7BA001538CD /* ChipmunkGLRenderBufferSampler.m */,
 				D3ACB0CE167FC275001538CD /* Resources */,
 				D3ACB0EC167FC276001538CD /* libs */,
 				D3ACB253167FC279001538CD /* Supporting Files */,
-				D3B4DE1F16821DBE00DE24C5 /* SpaceNode.h */,
-				D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */,
 			);
 			path = Gemeralds;
 			sourceTree = "<group>";
@@ -1343,6 +1352,7 @@
 				D3ACB382167FC7BA001538CD /* ChipmunkGLRenderBufferSampler.m in Sources */,
 				D3ACB3B8167FCAB4001538CD /* GeometryNode.m in Sources */,
 				D3B4DE2116821DBE00DE24C5 /* SpaceNode.m in Sources */,
+				D3B4DE2716823EDA00DE24C5 /* GeometrySprite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

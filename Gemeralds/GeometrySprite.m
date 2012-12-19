@@ -1,24 +1,28 @@
 //
-//  ChipmunkGeometryNode.m
+//  GeometrySprite.m
 //  Gemeralds
 //
-//  Created by Scott Lembcke on 12/17/12.
+//  Created by Scott Lembcke on 12/19/12.
 //  Copyright 2012 Howling Moon Software. All rights reserved.
 //
 
 #import "ObjectiveChipmunk.h"
-#import "GeometryNode.h"
+#import "GeometrySprite.h"
 #import "SpaceNode.h"
-
 #import "ChipmunkGLRenderBufferSampler.h"
 
-@implementation GeometryNode {
+
+@implementation GeometrySprite {
 }
 
 -(id)init
 {
 	if((self = [super init])){
 		_downsample = 2.0;
+		_density = 1.0;
+		
+		// Start with a body with infinite mass and fill it in later.
+		self.chipmunkBody = [ChipmunkBody bodyWithMass:INFINITY andMoment:INFINITY];
 	}
 	
 	return self;
@@ -38,18 +42,16 @@
 
 -(void)onEnter
 {
-	ChipmunkSpace *space = self.spaceNode.space;
-	
-	// TODO: Should this make a non-shared body at the anchor point instead?
-	// Possibly avoid alignment issues if you have nodes arranged with weird parent transforms
-	ChipmunkBody *body = space.staticBody;
+	NSMutableArray *chipmunkObjects = [NSMutableArray array];
+	ChipmunkBody *body = self.chipmunkBody;
+	[chipmunkObjects addObject:body];
 	
 	CGRect bounds = self.boundingBox;
 	CGSize size = bounds.size;
 	ChipmunkGLRenderBufferSampler *sampler = [[ChipmunkGLRenderBufferSampler alloc] initWithXSamples:size.width/_downsample ySamples:size.height/_downsample];
 	sampler.renderBounds = bounds;
 //	sampler.outputRect = cpBBNew(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-	sampler.borderValue = 1.0;
+	sampler.borderValue = 0.0;
 	
 	// Render the scene into the renderbuffer so it's ready to be processed
 	[sampler renderInto:^{[self visit];}];
@@ -58,24 +60,43 @@
 	// These coordinates won't quite line up with Cocos2D points or anything.
 	// Setup an affine transform to convert them.
 	CGAffineTransform transform = CGAffineTransformIdentity;
-	transform = CGAffineTransformTranslate(transform, bounds.origin.x, bounds.origin.y);
+	transform = CGAffineTransformRotate(transform, -self.chipmunkBody.angle);
+	transform = CGAffineTransformTranslate(transform, bounds.origin.x - self.position.x, bounds.origin.y - self.position.y);
 	transform = CGAffineTransformScale(transform, _downsample, _downsample);
 	
+	cpFloat mass = 0.0;
+	cpFloat moment = 0.0;
+	
 	for(ChipmunkPolyline *polyline in [sampler marchAllWithBorder:TRUE hard:FALSE]){
+		cpFloat area = polyline.area;
+		if(area <= 0.0) continue; // Ignore holes
+		
 		// Simplify the line data to ignore details smaller than the downsampling resolution.
 		// Because of how the sampler was set up, the units will be in render buffer pixels, not Cocos2D points or pixels.
 		ChipmunkPolyline *simplified = [polyline simplifyCurves:1.0f];
+		ChipmunkPolyline *hull = [simplified toConvexHull];
 		
-		for(int i=0; i<simplified.count-1; i++){
-			cpVect a = CGPointApplyAffineTransform(simplified.verts[  i], transform);
-			cpVect b = CGPointApplyAffineTransform(simplified.verts[i+1], transform);
-			
-			ChipmunkShape *seg = [ChipmunkSegmentShape segmentWithBody:body from:a to:b radius:1.0f];
-			seg.friction = _friction;
-			seg.elasticity = _elasticity;
-			[space add:seg];
+		int count = hull.count - 1;
+		cpVect transformed[hull.count];
+		for(int i=0; i<count; i++){
+			transformed[i] = CGPointApplyAffineTransform(hull.verts[i], transform);
 		}
+		
+		cpFloat m = area*_density;
+		mass += m;
+		moment += cpMomentForPoly(m, count, transformed, cpvzero);
+		
+		ChipmunkShape *shape = [ChipmunkPolyShape polyWithBody:body count:count verts:transformed offset:cpvzero];
+		shape.friction = _friction;
+		shape.elasticity = _elasticity;
+		[chipmunkObjects addObject:shape];
 	}
+	
+	body.mass = mass;
+	body.moment = moment;
+
+	_chipmunkObjects = chipmunkObjects;
+	[self.spaceNode.space add:self];
 }
 
 @end
