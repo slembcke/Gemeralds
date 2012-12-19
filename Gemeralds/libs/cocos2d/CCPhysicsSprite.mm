@@ -87,7 +87,6 @@
 -(CGAffineTransform) nodeToParentTransform
 {
 	cpVect rot = (_ignoreBodyRotation ? cpvforangle(-CC_DEGREES_TO_RADIANS(rotationX_)) : _body->rot);
-	rot.x *= scaleX_; rot.y *= scaleY_;
 	CGFloat x = _body->p.x + rot.x*-anchorPointInPoints_.x - rot.y*-anchorPointInPoints_.y;
 	CGFloat y = _body->p.y + rot.y*-anchorPointInPoints_.x + rot.x*-anchorPointInPoints_.y;
 	
@@ -96,7 +95,7 @@
 		y += anchorPointInPoints_.y;
 	}
 	
-	return (transform_ = CGAffineTransformMake(rot.x, rot.y, -rot.y,	rot.x, x,	y));
+	return (transform_ = CGAffineTransformMake(scaleX_*rot.x, scaleX_*rot.y, -scaleY_*rot.y, scaleY_*rot.x, x, y));
 }
 
 #elif CC_ENABLE_BOX2D_INTEGRATION
