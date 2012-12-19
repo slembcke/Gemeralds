@@ -163,119 +163,6 @@
 				<array>
 					<dict>
 						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string>GeometrySprite</string>
-						<key>customProperties</key>
-						<array>
-							<dict>
-								<key>name</key>
-								<string>density</string>
-								<key>optimized</key>
-								<false/>
-								<key>type</key>
-								<integer>1</integer>
-								<key>value</key>
-								<string>1.000000</string>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>friction</string>
-								<key>optimized</key>
-								<false/>
-								<key>type</key>
-								<integer>1</integer>
-								<key>value</key>
-								<string>0.700000</string>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>elasticity</string>
-								<key>optimized</key>
-								<false/>
-								<key>type</key>
-								<integer>1</integer>
-								<key>value</key>
-								<string>0.300000</string>
-							</dict>
-						</array>
-						<key>displayName</key>
-						<string>Gem</string>
-						<key>memberVarAssignmentName</key>
-						<string></string>
-						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
-						<key>properties</key>
-						<array>
-							<dict>
-								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>64</real>
-									<real>287.75</real>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>anchorPoint</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.51756525039672852</real>
-									<real>0.35298261046409607</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>0.30000001192092896</real>
-									<real>0.30000001192092896</real>
-									<true/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>rotation</string>
-								<key>type</key>
-								<string>Degrees</string>
-								<key>value</key>
-								<real>41.9423828125</real>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>ignoreAnchorPointForPosition</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>displayFrame</string>
-								<key>type</key>
-								<string>SpriteFrame</string>
-								<key>value</key>
-								<array>
-									<string></string>
-									<string>Gem Orange.png</string>
-								</array>
-							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>baseClass</key>
 						<string>CCNode</string>
 						<key>children</key>
 						<array>
@@ -1248,8 +1135,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>119</real>
-									<real>277.75</real>
+									<real>45</real>
+									<real>258.75</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1271,9 +1158,9 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.56409424543380737</real>
-									<real>0.21450059115886688</real>
-									<true/>
+									<real>0.39792999625205994</real>
+									<real>0.70598673820495605</real>
+									<false/>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1283,7 +1170,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-34.179901123046875</real>
+								<real>39.450023651123047</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1361,8 +1248,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>170</real>
-									<real>237.75</real>
+									<real>105</real>
+									<real>255.75</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1384,9 +1271,9 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.20708444714546204</real>
-									<real>0.41097599267959595</real>
-									<true/>
+									<real>0.84566432237625122</real>
+									<real>0.2081170380115509</real>
+									<false/>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1396,7 +1283,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>10.383922576904297</real>
+								<real>313.76181030273438</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1474,8 +1361,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>230</real>
-									<real>249.75</real>
+									<real>150</real>
+									<real>223.75</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1497,9 +1384,9 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.32364681363105774</real>
-									<real>0.31189674139022827</real>
-									<true/>
+									<real>0.38463953137397766</real>
+									<real>0.34285846352577209</real>
+									<false/>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1509,7 +1396,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-34.179901123046875</real>
+								<real>313.76181030273438</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1587,8 +1474,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>343</real>
-									<real>138.75</real>
+									<real>348</real>
+									<real>151.75</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1610,9 +1497,9 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.61552339792251587</real>
-									<real>0.51880741119384766</real>
-									<true/>
+									<real>0.75031495094299316</real>
+									<real>0.65453451871871948</real>
+									<false/>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1622,7 +1509,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-0.54294204711914062</real>
+								<real>30.0118408203125</real>
 							</dict>
 							<dict>
 								<key>name</key>

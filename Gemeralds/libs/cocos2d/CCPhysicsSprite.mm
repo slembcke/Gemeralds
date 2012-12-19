@@ -87,8 +87,8 @@
 -(CGAffineTransform) nodeToParentTransform
 {
 	cpVect rot = (_ignoreBodyRotation ? cpvforangle(-CC_DEGREES_TO_RADIANS(rotationX_)) : _body->rot);
-	CGFloat x = _body->p.x + rot.x*-anchorPointInPoints_.x - rot.y*-anchorPointInPoints_.y;
-	CGFloat y = _body->p.y + rot.y*-anchorPointInPoints_.x + rot.x*-anchorPointInPoints_.y;
+	CGFloat x = _body->p.x + scaleX_*rot.x*-anchorPointInPoints_.x - scaleY_*rot.y*-anchorPointInPoints_.y;
+	CGFloat y = _body->p.y + scaleX_*rot.y*-anchorPointInPoints_.x + scaleY_*rot.x*-anchorPointInPoints_.y;
 	
 	if(ignoreAnchorPointForPosition_){
 		x += anchorPointInPoints_.x;

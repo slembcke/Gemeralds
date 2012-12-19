@@ -151,9 +151,10 @@ DrawConstraint(cpConstraint *constraint, CCDrawNode *renderer)
 {
 	if( ! _spacePtr )
 		return;
-
+	
 	cpSpaceEachShape(_spacePtr, (cpSpaceShapeIteratorFunc)DrawShape, self);
 	cpSpaceEachConstraint(_spacePtr, (cpSpaceConstraintIteratorFunc)DrawConstraint, self);
+	cpSpaceEachBody_b(_spacePtr, ^(cpBody *body){[self drawDot:cpBodyGetPos(body) radius:3.0 color:ccc4f(1, 0, 0, 1)];});
 	
 	[super draw];
 	[super clear];
