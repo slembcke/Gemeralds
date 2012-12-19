@@ -41,8 +41,10 @@
 	GLuint _fbo, _rbo;
 }
 
--(id)initWithWidth:(NSUInteger)width height:(NSUInteger)height;
+-(id)initWithXSamples:(NSUInteger)width ySamples:(NSUInteger)height;
 
 -(void)renderInto:(void (^)(void))block;
+
+@property(nonatomic, assign) CGRect renderBounds;
 
 @end

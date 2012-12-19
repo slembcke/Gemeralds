@@ -23,7 +23,7 @@
 
 @implementation ChipmunkGLRenderBufferSampler
 
--(id)initWithWidth:(NSUInteger)width height:(NSUInteger)height;
+-(id)initWithXSamples:(NSUInteger)width ySamples:(NSUInteger)height;
 {
 	int stride = width*4;
 	NSMutableData *pixelData = [NSMutableData dataWithLength:stride*height];
@@ -75,10 +75,17 @@
 	kmMat4 old_projection;
 	kmGLGetMatrix(KM_GL_PROJECTION, &old_projection);
 	
-	// 350x250
 	kmMat4 projection;
 	kmGLMatrixMode(KM_GL_PROJECTION);
-	kmMat4OrthographicProjection(&projection, 0, 480, 0, 320, -1000, 1000);
+	kmMat4OrthographicProjection(
+		&projection,
+		CGRectGetMinX(_renderBounds),
+		CGRectGetMaxX(_renderBounds),
+		CGRectGetMinY(_renderBounds),
+		CGRectGetMaxY(_renderBounds),
+		-1000, 1000
+	);
+	kmGLLoadMatrix(&projection);
 	
 	glClear(GL_COLOR_BUFFER_BIT);
 	block();

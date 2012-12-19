@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface ChipmunkGeometryNode : CCNode {
-    
-}
+@interface GeometryNode : CCNode
+
+@property(nonatomic, assign) float downsample;
+@property(nonatomic, assign) float friction;
+@property(nonatomic, assign) float elasticity;
 
 @end

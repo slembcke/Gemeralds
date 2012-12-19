@@ -47,7 +47,7 @@
 static ccColor4F ColorForBody(cpBody *body)
 {
 	if(cpBodyIsStatic(body)){
-		return ccc4f(1, 1, 0, 0.5);
+		return ccc4f(1, 0, 1, 0.5);
 	} else if(cpBodyIsRogue(body) || cpBodyIsSleeping(body)){
 		return ccc4f(0.5, 0.5, 0.5 ,0.5);
 	} else if(body->CP_PRIVATE(node).idleTime > body->CP_PRIVATE(space)->sleepTimeThreshold) {
