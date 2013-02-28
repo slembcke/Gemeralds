@@ -11,6 +11,16 @@
 
 @implementation BumperSprite
 
+-(id)init
+{
+	if((self = [super init])){
+		self.friction = 0.8;
+		self.elasticity = 0.0;
+	}
+	
+	return self;
+}
+
 -(BOOL)isStatic
 {
 	return TRUE;

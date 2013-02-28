@@ -3130,6 +3130,29 @@
 						<array/>
 						<key>customClass</key>
 						<string>GeometrySprite</string>
+						<key>customProperties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>friction</string>
+								<key>optimized</key>
+								<false/>
+								<key>type</key>
+								<integer>1</integer>
+								<key>value</key>
+								<string>0.000000</string>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>elasticity</string>
+								<key>optimized</key>
+								<false/>
+								<key>type</key>
+								<integer>1</integer>
+								<key>value</key>
+								<string>1.000000</string>
+							</dict>
+						</array>
 						<key>displayName</key>
 						<string>Gem</string>
 						<key>memberVarAssignmentName</key>
@@ -3145,8 +3168,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>240</real>
-									<real>100</real>
+									<real>83</real>
+									<real>236</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3157,8 +3180,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.48523437976837158</real>
+									<real>0.36764705181121826</real>
 								</array>
 							</dict>
 							<dict>
@@ -3194,6 +3217,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -6507,6 +6532,26 @@
 								<key>value</key>
 								<string>table</string>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>friction</string>
+								<key>optimized</key>
+								<false/>
+								<key>type</key>
+								<integer>1</integer>
+								<key>value</key>
+								<string>0.700000</string>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>elasticity</string>
+								<key>optimized</key>
+								<false/>
+								<key>type</key>
+								<integer>1</integer>
+								<key>value</key>
+								<string>0.300000</string>
+							</dict>
 						</array>
 						<key>displayName</key>
 						<string>Geometry</string>
@@ -6978,8 +7023,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>

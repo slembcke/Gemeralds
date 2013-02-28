@@ -9,7 +9,7 @@
 #import "SpaceNode.h"
 #import <CoreMotion/CoreMotion.h>
 
-const cpFloat Gravity = 300.0;
+const cpFloat Gravity = 600.0;
 
 @implementation SpaceNode {
 	CCPhysicsDebugNode *_debugNode;
@@ -27,7 +27,7 @@ const cpFloat Gravity = 300.0;
 		_space.gravity = cpv(0, -Gravity);
 		
 		_debugNode = [CCPhysicsDebugNode debugNodeForChipmunkSpace:_space];
-		_debugNode.visible = TRUE;
+		_debugNode.visible = FALSE;
 		[self addChild:_debugNode z:1000];
 		
 		_identifiers = [NSMutableDictionary dictionary];

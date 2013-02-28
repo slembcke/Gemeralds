@@ -52,7 +52,7 @@
 {
 	_leftTouches++;
 	if(_leftTouches == 1){
-		NSLog(@"Left began");
+//		NSLog(@"Left began");
 		[self setLeftFlippers:TRUE to:TRUE];
 	}
 }
@@ -61,7 +61,7 @@
 {
 	_leftTouches--;
 	if(_leftTouches == 0){
-		NSLog(@"Left ended");
+//		NSLog(@"Left ended");
 		[self setLeftFlippers:TRUE to:FALSE];
 	}
 }
@@ -70,7 +70,7 @@
 {
 	_rightTouches++;
 	if(_rightTouches == 1){
-		NSLog(@"Right began");
+//		NSLog(@"Right began");
 		[self setLeftFlippers:FALSE to:TRUE];
 	}
 }
@@ -79,7 +79,7 @@
 {
 	_rightTouches--;
 	if(_rightTouches == 0){
-		NSLog(@"Right ended");
+//		NSLog(@"Right ended");
 		[self setLeftFlippers:FALSE to:FALSE];
 	}
 }

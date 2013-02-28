@@ -9,12 +9,22 @@
 #import "FlipperSprite.h"
 #import "PinballLayer.h"
 
-#define ACTUATOR_RATE 20.0f
+#define ACTUATOR_RATE 10.0f
 #define ACTUATOR_LIMIT 0.7f
-#define ACTUATOR_FORCE 1e10f
+#define ACTUATOR_FORCE 1e9f
 
 @implementation FlipperSprite {
-	ChipmunkSimpleMotor *_actuator;
+	ChipmunkGearJoint *_actuator;
+}
+
+-(id)init
+{
+	if((self = [super init])){
+		self.friction = 0.8;
+		self.elasticity = 0.3;
+	}
+	
+	return self;
 }
 
 -(PinballLayer *)pinballLayer
@@ -41,22 +51,26 @@
 
 -(NSArray *)setupExtras
 {
-	ChipmunkBody *body = self.chipmunkBody;
+	ChipmunkBody *bodyA = self.chipmunkBody;
+	ChipmunkBody *bodyB = [ChipmunkBody staticBody];
+	bodyB.pos = bodyA.pos;
 	
-	ChipmunkBody *staticBody = [ChipmunkBody staticBody];
-	staticBody.pos = body.pos;
-	
-	ChipmunkPivotJoint *pivot = [ChipmunkPivotJoint pivotJointWithBodyA:body bodyB:staticBody anchr1:cpvzero anchr2:cpvzero];
-	ChipmunkRotaryLimitJoint *limit = [ChipmunkRotaryLimitJoint rotaryLimitJointWithBodyA:body bodyB:staticBody min:0 max:0];
-	
+	// Swap the bodies for a left flipper so the rotation math works out the same way.
 	if(self.leftFlipper){
-		limit.min = -ACTUATOR_LIMIT;
-	} else {
-		limit.max =  ACTUATOR_LIMIT;
+		id tmp = bodyA;
+		bodyA = bodyB;
+		bodyB = tmp;
 	}
 	
-	_actuator = [ChipmunkSimpleMotor simpleMotorWithBodyA:body bodyB:staticBody rate:0.0f];
+	
+	ChipmunkPivotJoint *pivot = [ChipmunkPivotJoint pivotJointWithBodyA:bodyA bodyB:bodyB anchr1:cpvzero anchr2:cpvzero];
+	ChipmunkRotaryLimitJoint *limit = [ChipmunkRotaryLimitJoint rotaryLimitJointWithBodyA:bodyA bodyB:bodyB min:0 max:ACTUATOR_LIMIT];
+	
+	_actuator = [ChipmunkGearJoint gearJointWithBodyA:bodyA bodyB:bodyB phase:0.0f ratio:1.0f];
 	_actuator.maxForce = ACTUATOR_FORCE;
+	_actuator.maxBias = ACTUATOR_RATE;
+	_actuator.errorBias = pow(1.0 - 0.9, 60.0);
+	
 	self.up = FALSE;
 	
 	return @[pivot, limit, _actuator];
@@ -64,7 +78,7 @@
 
 -(void)setUp:(BOOL)up
 {
-	_actuator.rate = ACTUATOR_RATE*(self.leftFlipper^up ? -1.0f : 1.0f);
+	_actuator.phase = (up ? ACTUATOR_LIMIT : 0.0f);
 }
 
 @end
