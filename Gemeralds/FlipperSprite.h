@@ -11,4 +11,8 @@
 
 @interface FlipperSprite : GeometrySprite
 
+@property(nonatomic, assign) BOOL leftFlipper;
+
+@property(nonatomic, assign) BOOL up;
+
 @end

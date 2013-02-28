@@ -33,7 +33,7 @@
 		}
 	}
 	
-	@throw [NSException exceptionWithName:@"GeometryNodeError" reason:@"Geometry node does not have a parent of type SpacenNode" userInfo:nil];
+	@throw [NSException exceptionWithName:@"GeometryNodeError" reason:@"GeometryNode does not have a parent of type SpacenNode" userInfo:nil];
 }
 
 -(void)onEnter

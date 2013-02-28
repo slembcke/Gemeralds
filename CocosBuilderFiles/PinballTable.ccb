@@ -6646,6 +6646,19 @@
 								<array/>
 								<key>customClass</key>
 								<string>FlipperSprite</string>
+								<key>customProperties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>leftFlipper</string>
+										<key>optimized</key>
+										<false/>
+										<key>type</key>
+										<integer>2</integer>
+										<key>value</key>
+										<string>1</string>
+									</dict>
+								</array>
 								<key>displayName</key>
 								<string>CCSprite</string>
 								<key>memberVarAssignmentName</key>
@@ -6661,7 +6674,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>119</real>
+											<real>120</real>
 											<real>70</real>
 											<integer>0</integer>
 										</array>
@@ -6718,6 +6731,19 @@
 								<array/>
 								<key>customClass</key>
 								<string>FlipperSprite</string>
+								<key>customProperties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>leftFlipper</string>
+										<key>optimized</key>
+										<false/>
+										<key>type</key>
+										<integer>2</integer>
+										<key>value</key>
+										<string>0</string>
+									</dict>
+								</array>
 								<key>displayName</key>
 								<string>CCSprite</string>
 								<key>memberVarAssignmentName</key>
@@ -6790,6 +6816,19 @@
 								<array/>
 								<key>customClass</key>
 								<string>FlipperSprite</string>
+								<key>customProperties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>leftFlipper</string>
+										<key>optimized</key>
+										<false/>
+										<key>type</key>
+										<integer>2</integer>
+										<key>value</key>
+										<string>1</string>
+									</dict>
+								</array>
 								<key>displayName</key>
 								<string>CCSprite</string>
 								<key>memberVarAssignmentName</key>
@@ -6862,6 +6901,19 @@
 								<array/>
 								<key>customClass</key>
 								<string>FlipperSprite</string>
+								<key>customProperties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>leftFlipper</string>
+										<key>optimized</key>
+										<false/>
+										<key>type</key>
+										<integer>2</integer>
+										<key>value</key>
+										<string>0</string>
+									</dict>
+								</array>
 								<key>displayName</key>
 								<string>CCSprite</string>
 								<key>memberVarAssignmentName</key>
@@ -7503,7 +7555,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>PinballLayer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>

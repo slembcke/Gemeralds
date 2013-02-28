@@ -21,4 +21,7 @@
 
 @property(nonatomic, readonly) NSArray *chipmunkObjects;
 
+// This is used for setting up joints on the FlipperSprite subclass.
+-(NSArray *)setupExtras;
+
 @end

@@ -269,6 +269,7 @@
 		D3EA31B616DFE531001C7519 /* PinballTable.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = D3EA31B516DFE531001C7519 /* PinballTable.ccbi */; };
 		D3EA31BC16DFEDE3001C7519 /* BumperSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA31BB16DFEDE3001C7519 /* BumperSprite.m */; };
 		D3EA31BF16DFF27E001C7519 /* FlipperSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA31BE16DFF27D001C7519 /* FlipperSprite.m */; };
+		D3EA31C216E000C1001C7519 /* PinballLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA31C116E000C1001C7519 /* PinballLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -777,6 +778,8 @@
 		D3EA31BB16DFEDE3001C7519 /* BumperSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BumperSprite.m; sourceTree = "<group>"; };
 		D3EA31BD16DFF27D001C7519 /* FlipperSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipperSprite.h; sourceTree = "<group>"; };
 		D3EA31BE16DFF27D001C7519 /* FlipperSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipperSprite.m; sourceTree = "<group>"; };
+		D3EA31C016E000C1001C7519 /* PinballLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinballLayer.h; sourceTree = "<group>"; };
+		D3EA31C116E000C1001C7519 /* PinballLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinballLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -853,6 +856,8 @@
 			children = (
 				D3ACB257167FC279001538CD /* AppDelegate.h */,
 				D3ACB258167FC279001538CD /* AppDelegate.m */,
+				D3EA31C016E000C1001C7519 /* PinballLayer.h */,
+				D3EA31C116E000C1001C7519 /* PinballLayer.m */,
 				D3B4DE1F16821DBE00DE24C5 /* SpaceNode.h */,
 				D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */,
 				D3ACB3B6167FCAB4001538CD /* GeometryNode.h */,
@@ -1761,6 +1766,7 @@
 				D3B4DE2716823EDA00DE24C5 /* GeometrySprite.m in Sources */,
 				D3EA31BC16DFEDE3001C7519 /* BumperSprite.m in Sources */,
 				D3EA31BF16DFF27E001C7519 /* FlipperSprite.m in Sources */,
+				D3EA31C216E000C1001C7519 /* PinballLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

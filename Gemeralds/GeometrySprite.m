@@ -46,7 +46,12 @@
 		}
 	}
 	
-	@throw [NSException exceptionWithName:@"GeometryNodeError" reason:@"Geometry node does not have a parent of type SpacenNode" userInfo:nil];
+	@throw [NSException exceptionWithName:@"GeometryNodeError" reason:@"GeometrySprite does not have a parent of type SpacenNode" userInfo:nil];
+}
+
+-(NSArray *)setupExtras;
+{
+	return nil;
 }
 
 -(void)onEnter
@@ -105,7 +110,9 @@
 	
 	body.mass = mass;
 	body.moment = moment;
-
+	
+	chipmunkObjects = [chipmunkObjects arrayByAddingObjectsFromArray:[self setupExtras]];
+	
 	_chipmunkObjects = chipmunkObjects;
 	[self.spaceNode.space add:self];
 }
