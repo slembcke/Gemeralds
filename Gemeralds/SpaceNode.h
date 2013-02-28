@@ -14,4 +14,6 @@
 @property(nonatomic, readonly) ChipmunkSpace *space;
 @property(nonatomic, readonly) CCPhysicsDebugNode *debugNode;
 
+-(NSString *)identifierForKey:(NSString *)key;
+
 @end

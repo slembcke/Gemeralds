@@ -21,11 +21,20 @@
 		_downsample = 2.0;
 		_density = 1.0;
 		
-		// Start with a body with infinite mass and fill it in later.
-		self.chipmunkBody = [ChipmunkBody bodyWithMass:INFINITY andMoment:INFINITY];
+		if(self.isStatic){
+			self.chipmunkBody = [ChipmunkBody staticBody];
+		} else {
+			// Start with a body with infinite mass and fill it in later.
+			self.chipmunkBody = [ChipmunkBody bodyWithMass:INFINITY andMoment:INFINITY];
+		}
 	}
 	
 	return self;
+}
+
+-(BOOL)isStatic
+{
+	return FALSE;
 }
 
 // Look up the parent node chain for the SpaceNode.
@@ -44,11 +53,12 @@
 {
 	NSMutableArray *chipmunkObjects = [NSMutableArray array];
 	ChipmunkBody *body = self.chipmunkBody;
-	[chipmunkObjects addObject:body];
+	if(!body.isStatic) [chipmunkObjects addObject:body];
 	
 	CGRect bounds = self.boundingBox;
 	CGSize size = bounds.size;
-	ChipmunkGLRenderBufferSampler *sampler = [[ChipmunkGLRenderBufferSampler alloc] initWithXSamples:size.width/_downsample ySamples:size.height/_downsample];
+	cpFloat downsample = self.downsample;
+	ChipmunkGLRenderBufferSampler *sampler = [[ChipmunkGLRenderBufferSampler alloc] initWithXSamples:size.width/downsample ySamples:size.height/downsample];
 	sampler.renderBounds = bounds;
 //	sampler.outputRect = cpBBNew(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
 	sampler.borderValue = 0.0;
@@ -62,7 +72,7 @@
 	CGAffineTransform transform = CGAffineTransformIdentity;
 	transform = CGAffineTransformRotate(transform, -self.chipmunkBody.angle);
 	transform = CGAffineTransformTranslate(transform, bounds.origin.x - self.position.x, bounds.origin.y - self.position.y);
-	transform = CGAffineTransformScale(transform, _downsample, _downsample);
+	transform = CGAffineTransformScale(transform, downsample, downsample);
 	
 	cpFloat mass = 0.0;
 	cpFloat moment = 0.0;
@@ -82,13 +92,14 @@
 			transformed[i] = CGPointApplyAffineTransform(hull.verts[i], transform);
 		}
 		
-		cpFloat m = area*_density;
+		cpFloat m = area*self.density;
 		mass += m;
 		moment += cpMomentForPoly(m, count, transformed, cpvzero);
 		
 		ChipmunkShape *shape = [ChipmunkPolyShape polyWithBody:body count:count verts:transformed offset:cpvzero];
-		shape.friction = _friction;
-		shape.elasticity = _elasticity;
+		shape.friction = self.friction;
+		shape.elasticity = self.elasticity;
+		shape.group = [self.spaceNode identifierForKey:self.group];
 		[chipmunkObjects addObject:shape];
 	}
 	

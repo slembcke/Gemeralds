@@ -16,6 +16,8 @@ const cpFloat Gravity = 300.0;
 	
 	ccTime _accumulator;
 	CMMotionManager *_motion;
+	
+	NSMutableDictionary *_identifiers;
 }
 
 -(id)init
@@ -25,8 +27,10 @@ const cpFloat Gravity = 300.0;
 		_space.gravity = cpv(0, -Gravity);
 		
 		_debugNode = [CCPhysicsDebugNode debugNodeForChipmunkSpace:_space];
-		_debugNode.visible = FALSE;
+		_debugNode.visible = TRUE;
 		[self addChild:_debugNode z:1000];
+		
+		_identifiers = [NSMutableDictionary dictionary];
 	}
 	
 	return self;
@@ -70,6 +74,15 @@ const cpFloat Gravity = 300.0;
     [self tick:fixed_dt];
     _accumulator -= fixed_dt;
   }
+}
+
+-(NSString *)identifierForKey:(NSString *)key
+{
+	if(key && _identifiers[key] == nil){
+		_identifiers[key] = key;
+	}
+	
+	return _identifiers[key];
 }
 
 @end

@@ -9,14 +9,15 @@
 #import "ObjectiveChipmunk.h"
 #import "cocos2d.h"
 
-@interface GeometrySprite : CCPhysicsSprite <ChipmunkObject> {
-    
-}
+@interface GeometrySprite : CCPhysicsSprite <ChipmunkObject>
 
 @property(nonatomic, assign) float downsample;
 @property(nonatomic, assign) float density;
 @property(nonatomic, assign) float friction;
 @property(nonatomic, assign) float elasticity;
+@property(nonatomic, copy) NSString *group;
+
+@property(nonatomic, readonly) BOOL isStatic;
 
 @property(nonatomic, readonly) NSArray *chipmunkObjects;
 

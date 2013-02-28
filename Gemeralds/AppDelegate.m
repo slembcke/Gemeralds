@@ -35,7 +35,7 @@
 	if(director.runningScene == nil) {
 		// Add the first scene to the stack. The director will draw it immediately into the framebuffer. (Animation is started automatically when the view is displayed.)
 		// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-		[director runWithScene: [CCBReader sceneWithNodeGraphFromFile:@"Level1.ccbi"]];
+		[director runWithScene: [CCBReader sceneWithNodeGraphFromFile:@"PinballTable.ccbi"]];
 	}
 }
 @end
