@@ -38,6 +38,8 @@
 
 -(void)onEnter
 {
+	[super onEnter];
+	
 	ChipmunkSpace *space = self.spaceNode.space;
 	NSMutableArray *chipmunkObjects = [NSMutableArray array];
 	

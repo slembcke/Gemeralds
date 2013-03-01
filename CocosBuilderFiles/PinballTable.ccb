@@ -3140,7 +3140,7 @@
 								<key>type</key>
 								<integer>1</integer>
 								<key>value</key>
-								<string>0.000000</string>
+								<string>0.200000</string>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3151,6 +3151,16 @@
 								<integer>1</integer>
 								<key>value</key>
 								<string>1.000000</string>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>collisionType</string>
+								<key>optimized</key>
+								<false/>
+								<key>type</key>
+								<integer>3</integer>
+								<key>value</key>
+								<string>ball</string>
 							</dict>
 						</array>
 						<key>displayName</key>

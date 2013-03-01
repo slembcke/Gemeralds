@@ -16,6 +16,7 @@
 @property(nonatomic, assign) float friction;
 @property(nonatomic, assign) float elasticity;
 @property(nonatomic, copy) NSString *group;
+@property(nonatomic, copy) NSString *collisionType;
 
 @property(nonatomic, readonly) BOOL isStatic;
 

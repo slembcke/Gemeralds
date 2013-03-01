@@ -26,11 +26,14 @@ const cpFloat Gravity = 600.0;
 		_space = [[ChipmunkSpace alloc] init];
 		_space.gravity = cpv(0, -Gravity);
 		
+		_identifiers = [NSMutableDictionary dictionary];
+		[_space addCollisionHandler:self typeA:[self identifierForKey:@"bumper"] typeB:[self identifierForKey:@"ball"]
+			begin:nil preSolve:@selector(bumperPreSolve:space:) postSolve:nil separate:nil
+		];
+		
 		_debugNode = [CCPhysicsDebugNode debugNodeForChipmunkSpace:_space];
 		_debugNode.visible = FALSE;
 		[self addChild:_debugNode z:1000];
-		
-		_identifiers = [NSMutableDictionary dictionary];
 	}
 	
 	return self;
@@ -59,12 +62,13 @@ const cpFloat Gravity = 600.0;
 
 -(void)update:(ccTime)dt
 {
-#if !TARGET_IPHONE_SIMULATOR
-	CMAcceleration accel = _motion.accelerometerData.acceleration;
-	_space.gravity = cpvmult(cpv(-accel.y, accel.x), Gravity);
-#endif
+//#if !TARGET_IPHONE_SIMULATOR
+//	CMAcceleration accel = _motion.accelerometerData.acceleration;
+//	_space.gravity = cpvmult(cpv(-accel.y, accel.x), Gravity);
+//#endif
 	
-  ccTime fixed_dt = 1.0/(ccTime)60.0;
+	// Might as well use a small timestep since the simulation is so simple.
+  ccTime fixed_dt = 1.0/(ccTime)180.0;
   
   // Add the current dynamic timestep to the accumulator.
   // Clamp the timestep though to prevent really long frames from causing a large backlog of fixed timesteps to be run.
@@ -76,12 +80,23 @@ const cpFloat Gravity = 600.0;
   }
 }
 
+-(BOOL)bumperPreSolve:(cpArbiter *)arb space:(ChipmunkSpace *)space
+{
+	CHIPMUNK_ARBITER_GET_BODIES(arb, bumper, ball);
+	
+	cpVect n = cpArbiterGetNormal(arb, 0);
+	bumper.vel = cpvmult(n, 400.0f);
+	
+	return TRUE;
+}
+
 -(NSString *)identifierForKey:(NSString *)key
 {
 	if(key && _identifiers[key] == nil){
 		_identifiers[key] = key;
 	}
 	
+	NSLog(@"Returning %@ (%p)", _identifiers[key], _identifiers[key]);
 	return _identifiers[key];
 }
 

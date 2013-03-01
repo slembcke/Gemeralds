@@ -31,4 +31,9 @@
 	return @"table";
 }
 
+-(NSString *)collisionType
+{
+	return @"bumper";
+}
+
 @end

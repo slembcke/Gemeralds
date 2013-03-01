@@ -25,9 +25,20 @@
 
 -(void)onEnter
 {
-	self.pinballLayer.followNode = self;
-	
 	[super onEnter];
+	
+	self.pinballLayer.followNode = self;
+	[self scheduleUpdate];
+}
+
+-(void)update:(ccTime)dt
+{
+	ChipmunkBody *body = self.chipmunkBody;
+	
+	if(body.pos.y < -30.0f){
+		body.pos = cpv(240.0f + 30.0f, -30.0f);
+		body.vel = cpv(-150.0f, 500.0f);
+	}
 }
 
 @end

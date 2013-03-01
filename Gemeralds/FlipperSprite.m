@@ -45,8 +45,9 @@
 
 -(void)onEnter
 {
-	[self.pinballLayer addFlipper:self];
 	[super onEnter];
+	
+	[self.pinballLayer addFlipper:self];
 }
 
 -(NSArray *)setupExtras

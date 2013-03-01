@@ -44,8 +44,8 @@
 
 -(void)onEnter
 {
-	[self scheduleUpdateWithPriority:-1];
 	[super onEnter];
+	[self scheduleUpdateWithPriority:-1];
 }
 
 -(void)incrementLeft
@@ -133,12 +133,13 @@
 	}
 }
 
--(void)update:(ccTime)delta
+-(void)update:(ccTime)dt
 {
 	CGFloat h = [CCDirector sharedDirector].winSize.height;
-	CGFloat y = self.followNode.position.y;
+	CGFloat targetY = h/2.0f - self.followNode.position.y;
 	
-	self.position = ccp(0.0f, cpfclamp(h/2.0 - y, h - self.contentSize.height, 0.0f));
+	CGFloat scroll = cpflerp(self.position.y, targetY, 1.0f - powf(0.1f, dt*5.0));
+	self.position = ccp(0.0f, cpfclamp(scroll, h - self.contentSize.height, 0.0f));
 }
 
 @end

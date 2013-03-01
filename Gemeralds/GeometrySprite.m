@@ -56,6 +56,8 @@
 
 -(void)onEnter
 {
+	[super onEnter];
+	
 	NSMutableArray *chipmunkObjects = [NSMutableArray array];
 	ChipmunkBody *body = self.chipmunkBody;
 	if(!body.isStatic) [chipmunkObjects addObject:body];
@@ -105,6 +107,7 @@
 		shape.friction = self.friction;
 		shape.elasticity = self.elasticity;
 		shape.group = [self.spaceNode identifierForKey:self.group];
+		shape.collisionType = [self.spaceNode identifierForKey:self.collisionType];
 		[chipmunkObjects addObject:shape];
 	}
 	
