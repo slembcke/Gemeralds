@@ -44,7 +44,7 @@
 
 -(void)onEnter
 {
-	[self scheduleUpdate];
+	[self scheduleUpdateWithPriority:-1];
 	[super onEnter];
 }
 
@@ -105,7 +105,7 @@
 	CGFloat hw = [CCDirector sharedDirector].winSize.width/2.0;
 	
 	// Check if the touch changed sides.
-	// Being careful about middle conditions.
+	// Being careful about middle conditions here.
 	if((p.x - hw)*(pp.x - hw) <= 0.0f){
 		if(pp.x < hw){
 			[self decrementLeft];
@@ -135,7 +135,10 @@
 
 -(void)update:(ccTime)delta
 {
+	CGFloat h = [CCDirector sharedDirector].winSize.height;
+	CGFloat y = self.followNode.position.y;
 	
+	self.position = ccp(0.0f, cpfclamp(h/2.0 - y, h - self.contentSize.height, 0.0f));
 }
 
 @end

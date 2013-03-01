@@ -13,6 +13,8 @@
 
 @interface PinballLayer : CCLayer
 
+@property(nonatomic, strong) CCNode *followNode;
+
 -(void)addFlipper:(FlipperSprite *)flipper;
 
 @end

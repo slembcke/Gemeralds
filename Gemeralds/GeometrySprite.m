@@ -108,12 +108,13 @@
 		[chipmunkObjects addObject:shape];
 	}
 	
-	body.mass = mass;
-	body.moment = moment;
+	if(!body.isStatic){
+		body.mass = mass;
+		body.moment = moment;
+	}
 	
-	chipmunkObjects = [chipmunkObjects arrayByAddingObjectsFromArray:[self setupExtras]];
-	
-	_chipmunkObjects = chipmunkObjects;
+	NSArray *extras = [self setupExtras];
+	_chipmunkObjects = [chipmunkObjects arrayByAddingObjectsFromArray:extras];
 	[self.spaceNode.space add:self];
 }
 
