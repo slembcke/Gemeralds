@@ -166,6 +166,13 @@
 		D3ACB3B8167FCAB4001538CD /* GeometryNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB3B7167FCAB4001538CD /* GeometryNode.m */; };
 		D3B4DE2116821DBE00DE24C5 /* SpaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */; };
 		D3B4DE2716823EDA00DE24C5 /* GeometrySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4DE2616823EDA00DE24C5 /* GeometrySprite.m */; };
+		D3D331E416E8F52200A188E1 /* ding.caf in Resources */ = {isa = PBXBuildFile; fileRef = D3D331E116E8F52200A188E1 /* ding.caf */; };
+		D3D331E516E8F52200A188E1 /* flip-down.caf in Resources */ = {isa = PBXBuildFile; fileRef = D3D331E216E8F52200A188E1 /* flip-down.caf */; };
+		D3D331E616E8F52200A188E1 /* flip-up.caf in Resources */ = {isa = PBXBuildFile; fileRef = D3D331E316E8F52200A188E1 /* flip-up.caf */; };
+		D3D331E816E8F6A800A188E1 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB214167FC278001538CD /* CDAudioManager.m */; };
+		D3D331E916E8F6A800A188E1 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB218167FC278001538CD /* CDOpenALSupport.m */; };
+		D3D331EA16E8F6A800A188E1 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB21B167FC278001538CD /* CocosDenshion.m */; };
+		D3D331EB16E8F6A800A188E1 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ACB21E167FC278001538CD /* SimpleAudioEngine.m */; };
 		D3EA314F16DFE472001C7519 /* Brown_Block-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EA30E816DFE472001C7519 /* Brown_Block-hd.png */; };
 		D3EA315016DFE472001C7519 /* Brown_Block.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EA30E916DFE472001C7519 /* Brown_Block.png */; };
 		D3EA315116DFE472001C7519 /* ccbDefaultImages-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3EA30EB16DFE472001C7519 /* ccbDefaultImages-hd.plist */; };
@@ -674,6 +681,9 @@
 		D3B4DE2016821DBE00DE24C5 /* SpaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceNode.m; sourceTree = "<group>"; };
 		D3B4DE2516823EDA00DE24C5 /* GeometrySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometrySprite.h; sourceTree = "<group>"; };
 		D3B4DE2616823EDA00DE24C5 /* GeometrySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeometrySprite.m; sourceTree = "<group>"; };
+		D3D331E116E8F52200A188E1 /* ding.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ding.caf; path = Resources/ding.caf; sourceTree = "<group>"; };
+		D3D331E216E8F52200A188E1 /* flip-down.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "flip-down.caf"; path = "Resources/flip-down.caf"; sourceTree = "<group>"; };
+		D3D331E316E8F52200A188E1 /* flip-up.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "flip-up.caf"; path = "Resources/flip-up.caf"; sourceTree = "<group>"; };
 		D3EA30E816DFE472001C7519 /* Brown_Block-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Brown_Block-hd.png"; sourceTree = "<group>"; };
 		D3EA30E916DFE472001C7519 /* Brown_Block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brown_Block.png; sourceTree = "<group>"; };
 		D3EA30EB16DFE472001C7519 /* ccbDefaultImages-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ccbDefaultImages-hd.plist"; sourceTree = "<group>"; };
@@ -883,6 +893,9 @@
 		D3ACB0CE167FC275001538CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3D331E116E8F52200A188E1 /* ding.caf */,
+				D3D331E216E8F52200A188E1 /* flip-down.caf */,
+				D3D331E316E8F52200A188E1 /* flip-up.caf */,
 				D348712D16ADBF8500A14982 /* ccbDefaultImages-hd.plist */,
 				D348712E16ADBF8500A14982 /* ccbDefaultImages-hd.png */,
 				D348712F16ADBF8500A14982 /* ccbDefaultImages.plist */,
@@ -1749,6 +1762,9 @@
 				D3EA31B316DFE472001C7519 /* Wood_Block-hd.png in Resources */,
 				D3EA31B416DFE472001C7519 /* Wood_Block.png in Resources */,
 				D3EA31B616DFE531001C7519 /* PinballTable.ccbi in Resources */,
+				D3D331E416E8F52200A188E1 /* ding.caf in Resources */,
+				D3D331E516E8F52200A188E1 /* flip-down.caf in Resources */,
+				D3D331E616E8F52200A188E1 /* flip-up.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1776,6 +1792,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D331E816E8F6A800A188E1 /* CDAudioManager.m in Sources */,
+				D3D331E916E8F6A800A188E1 /* CDOpenALSupport.m in Sources */,
+				D3D331EA16E8F6A800A188E1 /* CocosDenshion.m in Sources */,
+				D3D331EB16E8F6A800A188E1 /* SimpleAudioEngine.m in Sources */,
 				D3ACB2C6167FC35A001538CD /* base64.c in Sources */,
 				D3ACB2C7167FC35A001538CD /* ccUtils.c in Sources */,
 				D3ACB2C8167FC35A001538CD /* aabb.c in Sources */,

@@ -9,6 +9,8 @@
 #import "SpaceNode.h"
 #import <CoreMotion/CoreMotion.h>
 
+#import "SimpleAudioEngine.h"
+
 const cpFloat Gravity = 600.0;
 
 @implementation SpaceNode {
@@ -86,6 +88,8 @@ const cpFloat Gravity = 600.0;
 	
 	cpVect n = cpArbiterGetNormal(arb, 0);
 	bumper.vel = cpvmult(n, 400.0f);
+	
+	[[SimpleAudioEngine sharedEngine] playEffect:@"ding.caf"];
 	
 	return TRUE;
 }

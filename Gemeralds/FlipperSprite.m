@@ -9,6 +9,8 @@
 #import "FlipperSprite.h"
 #import "PinballLayer.h"
 
+#import "SimpleAudioEngine.h"
+
 #define ACTUATOR_RATE 10.0f
 #define ACTUATOR_LIMIT 0.7f
 #define ACTUATOR_FORCE 1e9f
@@ -80,6 +82,12 @@
 -(void)setUp:(BOOL)up
 {
 	_actuator.phase = (up ? ACTUATOR_LIMIT : 0.0f);
+	
+	if(up){
+		[[SimpleAudioEngine sharedEngine] playEffect:@"flip-up.caf"];
+	} else {
+		[[SimpleAudioEngine sharedEngine] playEffect:@"flip-down.caf"];
+	}
 }
 
 @end
