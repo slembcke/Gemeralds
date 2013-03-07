@@ -28,10 +28,6 @@
 		D3ACB0D8167FC275001538CD /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0D7167FC275001538CD /* fps_images.png */; };
 		D3ACB0DA167FC275001538CD /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0D9167FC275001538CD /* fps_images-hd.png */; };
 		D3ACB0DC167FC275001538CD /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0DB167FC275001538CD /* fps_images-ipadhd.png */; };
-		D3ACB0DE167FC276001538CD /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0DD167FC276001538CD /* Icon-72.png */; };
-		D3ACB0E0167FC276001538CD /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0DF167FC276001538CD /* Icon-Small-50.png */; };
-		D3ACB0E2167FC276001538CD /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0E1167FC276001538CD /* Icon-Small.png */; };
-		D3ACB0E4167FC276001538CD /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0E3167FC276001538CD /* Icon-Small@2x.png */; };
 		D3ACB0E6167FC276001538CD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0E5167FC276001538CD /* Icon.png */; };
 		D3ACB0E8167FC276001538CD /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0E7167FC276001538CD /* Icon@2x.png */; };
 		D3ACB0EB167FC276001538CD /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = D3ACB0EA167FC276001538CD /* iTunesArtwork */; };
@@ -325,10 +321,6 @@
 		D3ACB0D7167FC275001538CD /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/fps_images.png; sourceTree = "<group>"; };
 		D3ACB0D9167FC275001538CD /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-hd.png"; path = "Resources/fps_images-hd.png"; sourceTree = "<group>"; };
 		D3ACB0DB167FC275001538CD /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-ipadhd.png"; path = "Resources/fps_images-ipadhd.png"; sourceTree = "<group>"; };
-		D3ACB0DD167FC276001538CD /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
-		D3ACB0DF167FC276001538CD /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
-		D3ACB0E1167FC276001538CD /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
-		D3ACB0E3167FC276001538CD /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		D3ACB0E5167FC276001538CD /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		D3ACB0E7167FC276001538CD /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		D3ACB0E9167FC276001538CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
@@ -906,10 +898,6 @@
 				D3ACB0D7167FC275001538CD /* fps_images.png */,
 				D3ACB0D9167FC275001538CD /* fps_images-hd.png */,
 				D3ACB0DB167FC275001538CD /* fps_images-ipadhd.png */,
-				D3ACB0DD167FC276001538CD /* Icon-72.png */,
-				D3ACB0DF167FC276001538CD /* Icon-Small-50.png */,
-				D3ACB0E1167FC276001538CD /* Icon-Small.png */,
-				D3ACB0E3167FC276001538CD /* Icon-Small@2x.png */,
 				D3ACB0E5167FC276001538CD /* Icon.png */,
 				D3ACB0E7167FC276001538CD /* Icon@2x.png */,
 				D3ACB0E9167FC276001538CD /* Info.plist */,
@@ -1649,10 +1637,6 @@
 				D3ACB0D8167FC275001538CD /* fps_images.png in Resources */,
 				D3ACB0DA167FC275001538CD /* fps_images-hd.png in Resources */,
 				D3ACB0DC167FC275001538CD /* fps_images-ipadhd.png in Resources */,
-				D3ACB0DE167FC276001538CD /* Icon-72.png in Resources */,
-				D3ACB0E0167FC276001538CD /* Icon-Small-50.png in Resources */,
-				D3ACB0E2167FC276001538CD /* Icon-Small.png in Resources */,
-				D3ACB0E4167FC276001538CD /* Icon-Small@2x.png in Resources */,
 				D3ACB0E6167FC276001538CD /* Icon.png in Resources */,
 				D3ACB0E8167FC276001538CD /* Icon@2x.png in Resources */,
 				D3ACB0EB167FC276001538CD /* iTunesArtwork in Resources */,

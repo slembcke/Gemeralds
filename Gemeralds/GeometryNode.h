@@ -22,6 +22,7 @@
 
 // GeometryNode is the class used in a CocosBuilder scene that generates static, outlined
 // Chipmunk geometry for it's child sprites. It must be added as a child of a SpaceNode.
+// The content size of the node is what provides the size of the area to be processed for geometry.
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
