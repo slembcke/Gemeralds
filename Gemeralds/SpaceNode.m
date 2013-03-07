@@ -1,10 +1,24 @@
-//
-//  SpaceNode.m
-//  Gemeralds
-//
-//  Created by Scott Lembcke on 12/19/12.
-//  Copyright 2012 Howling Moon Software. All rights reserved.
-//
+/* Copyright (c) 2013 Scott Lembcke and Howling Moon Software
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 
 #import "SpaceNode.h"
 #import <CoreMotion/CoreMotion.h>
@@ -20,6 +34,17 @@ const cpFloat Gravity = 600.0;
 	CMMotionManager *_motion;
 	
 	NSMutableDictionary *_identifiers;
+}
+
++(SpaceNode *)spaceNode:(CCNode *)child;
+{
+	for(CCNode *node = child.parent;; node = node.parent){
+		if([node isKindOfClass:[SpaceNode class]]){
+			return (id)node;
+		}
+	}
+	
+	@throw [NSException exceptionWithName:@"SpaceNodeError" reason:@"Child does not have a parent of type SpacenNode" userInfo:nil];
 }
 
 -(id)init
@@ -70,6 +95,7 @@ const cpFloat Gravity = 600.0;
 //#endif
 	
 	// Might as well use a small timestep since the simulation is so simple.
+	// This avoids synchronization issues without fancy interpolation/extrapolation as well.
   ccTime fixed_dt = 1.0/(ccTime)180.0;
   
   // Add the current dynamic timestep to the accumulator.
@@ -86,6 +112,9 @@ const cpFloat Gravity = 600.0;
 {
 	CHIPMUNK_ARBITER_GET_BODIES(arb, bumper, ball);
 	
+	// So this is sort of a hack.
+	// There will be a feature to better support this in the future.
+	// Basically, we want the collision to think that the bumper is moving, even though it's a static body.
 	cpVect n = cpArbiterGetNormal(arb, 0);
 	bumper.vel = cpvmult(n, 400.0f);
 	

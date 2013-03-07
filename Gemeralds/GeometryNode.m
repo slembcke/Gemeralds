@@ -1,10 +1,24 @@
-//
-//  ChipmunkGeometryNode.m
-//  Gemeralds
-//
-//  Created by Scott Lembcke on 12/17/12.
-//  Copyright 2012 Howling Moon Software. All rights reserved.
-//
+/* Copyright (c) 2013 Scott Lembcke and Howling Moon Software
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 
 #import "ObjectiveChipmunk.h"
 #import "GeometryNode.h"
@@ -24,43 +38,34 @@
 	return self;
 }
 
-// Look up the parent node chain for the SpaceNode.
--(SpaceNode *)spaceNode
-{
-	for(CCNode *node = self.parent;; node = node.parent){
-		if([node isKindOfClass:[SpaceNode class]]){
-			return (id)node;
-		}
-	}
-	
-	@throw [NSException exceptionWithName:@"GeometryNodeError" reason:@"GeometryNode does not have a parent of type SpacenNode" userInfo:nil];
-}
-
 -(void)onEnter
 {
 	[super onEnter];
 	
-	ChipmunkSpace *space = self.spaceNode.space;
+	SpaceNode *spaceNode = [SpaceNode spaceNode:self];
+	ChipmunkSpace *space = spaceNode.space;
 	NSMutableArray *chipmunkObjects = [NSMutableArray array];
 	
 	// TODO: Should this make a non-shared body at the anchor point instead?
 	// Possibly avoid alignment issues if you have nodes arranged with weird parent transforms
 	ChipmunkBody *body = space.staticBody;
 	
-	NSString *group = [self.spaceNode identifierForKey:self.group];
+	NSString *group = [spaceNode identifierForKey:self.group];
 	
 	CGRect bounds = self.boundingBox;
 	CGSize size = bounds.size;
 	cpFloat downsample = self.downsample;
 	ChipmunkGLRenderBufferSampler *sampler = [[ChipmunkGLRenderBufferSampler alloc] initWithXSamples:size.width/downsample ySamples:size.height/downsample];
 	sampler.renderBounds = bounds;
-//	sampler.outputRect = cpBBNew(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
+	[sampler setBorderRepeat];
+	
+	// You could also set it up to have a solid or open border as well.
 //	sampler.borderValue = 1.0;
 	
 	// Render the scene into the renderbuffer so it's ready to be processed
 	[sampler renderInto:^{[self visit];}];
 	
-	// Confusingly, the coordinates returned by the render buffer sampler are in pixel coordinates.
+	// Confusingly, the coordinates returned by the render buffer sampler are in renderbuffer pixel coordinates.
 	// These coordinates won't quite line up with Cocos2D points or anything.
 	// Setup an affine transform to convert them.
 	CGAffineTransform transform = CGAffineTransformIdentity;

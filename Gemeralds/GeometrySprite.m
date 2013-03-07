@@ -1,10 +1,24 @@
-//
-//  GeometrySprite.m
-//  Gemeralds
-//
-//  Created by Scott Lembcke on 12/19/12.
-//  Copyright 2012 Howling Moon Software. All rights reserved.
-//
+/* Copyright (c) 2013 Scott Lembcke and Howling Moon Software
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 
 #import "ObjectiveChipmunk.h"
 #import "GeometrySprite.h"
@@ -67,7 +81,6 @@
 	cpFloat downsample = self.downsample;
 	ChipmunkGLRenderBufferSampler *sampler = [[ChipmunkGLRenderBufferSampler alloc] initWithXSamples:size.width/downsample ySamples:size.height/downsample];
 	sampler.renderBounds = bounds;
-//	sampler.outputRect = cpBBNew(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
 	sampler.borderValue = 0.0;
 	
 	// Render the scene into the renderbuffer so it's ready to be processed
@@ -93,6 +106,8 @@
 		ChipmunkPolyline *simplified = [polyline simplifyCurves:1.0f];
 		ChipmunkPolyline *hull = [simplified toConvexHull];
 		
+		// You could also use [simplified toConvexHulls_BETA:] if you don't want a single convex hull.
+		
 		int count = hull.count - 1;
 		cpVect transformed[hull.count];
 		for(int i=0; i<count; i++){
@@ -111,6 +126,7 @@
 		[chipmunkObjects addObject:shape];
 	}
 	
+	// Overwrite the mass properties only if the body is dynamic.
 	if(!body.isStatic){
 		body.mass = mass;
 		body.moment = moment;

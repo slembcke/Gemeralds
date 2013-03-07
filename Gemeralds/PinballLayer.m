@@ -1,10 +1,24 @@
-//
-//  PinballLayer.m
-//  Gemeralds
-//
-//  Created by Scott Lembcke on 2/28/13.
-//  Copyright 2013 Howling Moon Software. All rights reserved.
-//
+/* Copyright (c) 2013 Scott Lembcke and Howling Moon Software
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 
 #import "ObjectiveChipmunk.h"
 #import "PinballLayer.h"
@@ -14,6 +28,17 @@
 	NSMutableArray *_flippers;
 	
 	int _leftTouches, _rightTouches;
+}
+
++(PinballLayer *)pinballLayer:(CCNode *)child
+{
+	for(CCNode *node = child.parent;; node = node.parent){
+		if([node isKindOfClass:[PinballLayer class]]){
+			return (id)node;
+		}
+	}
+	
+	@throw [NSException exceptionWithName:@"PinballLayerError" reason:@"Child does not have a parent of type PinballLayer" userInfo:nil];
 }
 
 -(id)init
@@ -47,6 +72,17 @@
 	[super onEnter];
 	[self scheduleUpdateWithPriority:-1];
 }
+
+-(void)update:(ccTime)dt
+{
+	CGFloat h = [CCDirector sharedDirector].winSize.height;
+	CGFloat targetY = h/2.0f - self.followNode.position.y;
+	
+	CGFloat scroll = cpflerp(self.position.y, targetY, 1.0f - powf(0.1f, dt*5.0));
+	self.position = ccp(0.0f, cpfclamp(scroll, h - self.contentSize.height, 0.0f));
+}
+
+// Mark: Input Methods
 
 -(void)incrementLeft
 {
@@ -131,15 +167,6 @@
 	} else {
 		[self decrementRight];
 	}
-}
-
--(void)update:(ccTime)dt
-{
-	CGFloat h = [CCDirector sharedDirector].winSize.height;
-	CGFloat targetY = h/2.0f - self.followNode.position.y;
-	
-	CGFloat scroll = cpflerp(self.position.y, targetY, 1.0f - powf(0.1f, dt*5.0));
-	self.position = ccp(0.0f, cpfclamp(scroll, h - self.contentSize.height, 0.0f));
 }
 
 @end
