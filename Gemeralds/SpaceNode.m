@@ -59,7 +59,7 @@ const cpFloat Gravity = 600.0;
 		];
 		
 		_debugNode = [CCPhysicsDebugNode debugNodeForChipmunkSpace:_space];
-		_debugNode.visible = FALSE;
+		_debugNode.visible = TRUE;
 		[self addChild:_debugNode z:1000];
 	}
 	

@@ -57,10 +57,7 @@
 	cpFloat downsample = self.downsample;
 	ChipmunkGLRenderBufferSampler *sampler = [[ChipmunkGLRenderBufferSampler alloc] initWithXSamples:size.width/downsample ySamples:size.height/downsample];
 	sampler.renderBounds = bounds;
-	[sampler setBorderRepeat];
-	
-	// You could also set it up to have a solid or open border as well.
-//	sampler.borderValue = 1.0;
+	[sampler setBorderValue:0.0];
 	
 	// Render the scene into the renderbuffer so it's ready to be processed
 	[sampler renderInto:^{[self visit];}];
@@ -72,20 +69,22 @@
 	transform = CGAffineTransformTranslate(transform, bounds.origin.x, bounds.origin.y);
 	transform = CGAffineTransformScale(transform, downsample, downsample);
 	
-	for(ChipmunkPolyline *polyline in [sampler marchAllWithBorder:FALSE hard:FALSE]){
+	for(ChipmunkPolyline *polyline in [sampler marchAllWithBorder:TRUE hard:FALSE]){
 		// Simplify the line data to ignore details smaller than the downsampling resolution.
 		// Because of how the sampler was set up, the units will be in render buffer pixels, not Cocos2D points or pixels.
 		ChipmunkPolyline *simplified = [polyline simplifyCurves:1.0f];
-		
-		for(int i=0; i<simplified.count-1; i++){
-			cpVect a = CGPointApplyAffineTransform(simplified.verts[  i], transform);
-			cpVect b = CGPointApplyAffineTransform(simplified.verts[i+1], transform);
+		for(ChipmunkPolyline *hull in [simplified toConvexHulls_BETA:1.0]){
+			// Annoying step to convert the coordinates.
+			cpVect verts[hull.count - 1];
+			for(int i=0; i<hull.count - 1; i++){
+				verts[i] = CGPointApplyAffineTransform(hull.verts[i], transform);
+			}
 			
-			ChipmunkShape *seg = [ChipmunkSegmentShape segmentWithBody:body from:a to:b radius:1.0f];
-			seg.friction = self.friction;
-			seg.elasticity = self.elasticity;
-			seg.group = group;
-			[chipmunkObjects addObject:seg];
+			ChipmunkShape *poly = [ChipmunkPolyShape polyWithBody:body count:hull.count - 1 verts:verts offset:cpvzero];
+			poly.friction = self.friction;
+			poly.elasticity = self.elasticity;
+			poly.group = group;
+			[chipmunkObjects addObject:poly];
 		}
 	}
 	
